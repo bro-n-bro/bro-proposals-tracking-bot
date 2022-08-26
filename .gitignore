@@ -130,3 +130,6 @@ dmypy.json
 
 # IDE
 .idea/
+
+# SQL
+data/proposals.db
