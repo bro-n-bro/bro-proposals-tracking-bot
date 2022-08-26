@@ -35,7 +35,6 @@ def notifier(telegram_bot, _row):
 
 
 def processor(telegram_bot):
-    save_data()
     outdated_props = get_outdated_props()
     if outdated_props and outdated_props != []:
         msgs_to_delete = [x[6] for x in outdated_props]
@@ -46,6 +45,7 @@ def processor(telegram_bot):
                 print(e)
                 pass
     drop_rows()
+    save_data()
     rows = get_all_rows()
     for row in rows:
         notifier(telegram_bot, row)

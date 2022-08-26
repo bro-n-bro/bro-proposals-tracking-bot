@@ -68,7 +68,7 @@ NETWORKS = [
         "lcd_api": "https://lcd.evmos-9001-2.bronbro.io",
         "validator": "evmosvaloper1ce4vh0e5kanlgc7z0rhcemvd8erjnfzcyfecl7",
         "coingecko_api": "evmos",
-        "prefix": "evm",
+        "prefix": "evmos",
         "base_denom": "aevmos",
         "exponent": 1_000_000_000_000_000_000,
         "explorer": "https://www.mintscan.io/evmos/proposals/"
