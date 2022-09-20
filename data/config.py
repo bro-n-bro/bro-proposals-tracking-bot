@@ -2,8 +2,8 @@ NOTIFIER_FREQUENCY = 60 * 15 # seconds
 
 SQL_PATH = './data/proposals.db'
 
-TG_BOT_API_TOKEN = ''
-CHAT_ID = 1
+TG_BOT_API_TOKEN = 'insert_your_bot_api_token'
+CHAT_ID = 1   # insert chat id, even if tarts with -
 
 NOTIFIER_REMINDER_MODES = {
         "SOFT": (range(345_600, 3_036_800), 86_400),
@@ -15,105 +15,81 @@ NOTIFIER_REMINDER_MODES = {
 NETWORKS = [
     {
         "name": "bostrom",
-        "lcd_api": "https://lcd.bostrom.bronbro.io",
+        "lcd_api": "https://lcd.bostrom",
         "validator": "bostromvaloper1ydc5fy9fjdygvgw36u49yj39fr67pd9m5qexm8",
-        "coingecko_api": "bostrom",
         "prefix": "bostrom",
-        "base_denom": "boot",
-        "exponent": 1,
         "explorer": "https://cyb.ai/senate/"
     },
     {
         "name": "osmosis",
-        "lcd_api": "https://lcd.osmosis-1.bronbro.io",
+        "lcd_api": "http://lcd.osmosis-1",
         "validator": "osmovaloper13tk45jkxgf7w0nxquup3suwaz2tx483xe832ge",
-        "coingecko_api": "osmosis",
         "prefix": "osmo",
-        "base_denom": "uosmo",
-        "exponent": 1_000_000,
         "explorer": "https://www.mintscan.io/osmosis/proposals/"
     },
     {
         "name": "juno",
-        "lcd_api": "https://lcd.juno-1.bronbro.io",
+        "lcd_api": "http://lcd.juno-1",
         "validator": "junovaloper1quqxfrxkycr0uzt4yk0d57tcq3zk7srm7sm6r8",
-        "coingecko_api": "juno-network",
         "prefix": "juno",
-        "base_denom": "ujuno",
-        "exponent": 1_000_000,
         "explorer": "https://www.mintscan.io/juno/proposals/"
     },
     {
         "name": "stargaze",
-        "lcd_api": "https://lcd.stargaze-1.bronbro.io",
+        "lcd_api": "http://lcd.stargaze-1",
         "validator": "starsvaloper1y58hfnm90r4efhlydx0gavz57lvm7k6uulkg3h",
-        "coingecko_api": "stargaze",
         "prefix": "stars",
-        "base_denom": "ustars",
-        "exponent": 1_000_000,
         "explorer": "https://www.mintscan.io/stargaze/proposals/"
     },
     {
         "name": "gravity",
-        "lcd_api": "https://lcd.gravity-bridge-3.bronbro.io",
+        "lcd_api": "http://lcd.gravity-bridge-3",
         "validator": "gravityvaloper1vyd4k5j636erx5y5kdqghdu3rfjtwc48vdc7r6",
-        "coingecko_api": "graviton",
         "prefix": "gravity",
-        "base_denom": "ugraviton",
-        "exponent": 1_000_000,
         "explorer": "https://www.mintscan.io/gravity-bridge/proposals/"
     },
     {
         "name": "evmos",
-        "lcd_api": "https://lcd.evmos-9001-2.bronbro.io",
+        "lcd_api": "http://lcd.evmos_9001-2",
         "validator": "evmosvaloper1ce4vh0e5kanlgc7z0rhcemvd8erjnfzcyfecl7",
-        "coingecko_api": "evmos",
         "prefix": "evmos",
-        "base_denom": "aevmos",
-        "exponent": 1_000_000_000_000_000_000,
         "explorer": "https://www.mintscan.io/evmos/proposals/"
     },
     {
         "name": "crescent",
-        "lcd_api": "https://lcd.crescent-1.bronbro.io",
+        "lcd_api": "http://lcd.crescent-1",
         "validator": "crevaloper1c96vvme4k42zlvkc56fslmdpa2qj6u80xvqwau",
-        "coingecko_api": "crescent-network",
         "prefix": "cre",
-        "base_denom": "ucre",
-        "exponent": 1_000_000,
         "explorer": "https://www.mintscan.io/crescent/proposals/"
     },
     {
         "name": "omniflix",
-        "lcd_api": "https://lcd.omniflixhub-1.bronbro.io",
+        "lcd_api": "http://lcd.omniflixhub-1",
         "validator": "omniflixvaloper1e8grpphncncw9hrutyvnlv77n5dejwcne58zk4",
-        "coingecko_api": "omniflix-network",
         "prefix": "omniflix",
-        "base_denom": "uflix",
-        "exponent": 1_000_000,
         "explorer": "https://www.mintscan.io/omniflix/proposals/"
     },
     {
         "name": "cosmoshub",
-        "lcd_api": "https://lcd.cosmoshub-4.bronbro.io",
+        "lcd_api": "http://lcd.cosmoshub-4",
         "validator": "cosmosvaloper106yp7zw35wftheyyv9f9pe69t8rteumjrx52jg",
-        "coingecko_api": "cosmos",
         "prefix": "cosmos",
-        "base_denom": "uatom",
-        "exponent": 1_000_000,
         "explorer": "https://www.mintscan.io/cosmos/proposals/"
     },
     {
         "name": "desmos",
-        "lcd_api": "https://lcd.desmos-mainnet.bronbro.io",
+        "lcd_api": "http://lcd.desmos-mainnet",
         "validator": "desmosvaloper1sykf8q94l8q8mqstf64ptuvp74ueyehxpgcq76",
-        "coingecko_api": "desmos",
         "prefix": "desmos",
-        "base_denom": "udsm",
-        "exponent": 1_000_000,
         "explorer": "https://www.mintscan.io/desmos/proposals/"
     },
-
+    {
+        "name": "stride",
+        "lcd_api": "http://lcd.stride-1",
+        "validator": "stridevaloper1hl95uhecs4rwe0g432mknz2tsl84f0ltexpzc3",
+        "prefix": "stride",
+        "explorer": "https://www.mintscan.io/stride/proposals/"
+    }
 ]
 
 PHRASES = {
