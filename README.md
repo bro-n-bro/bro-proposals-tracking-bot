@@ -1,4 +1,4 @@
-# T by your Bro
+# Telegram proposal tracker bot by your Bro
 
 ## What is this
 
