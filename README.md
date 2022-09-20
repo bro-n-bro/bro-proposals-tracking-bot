@@ -52,4 +52,4 @@ NOTIFIER_REMINDER_MODES = {
 
 The first time range defines how `soon` proposal will end, the last one is how often to send reminder. All numbers are in seconds so keep the formatting as it was in case of adjusting. 
 
-Also, at the very bottom of `config.py`, motivational phrases are located, which might be updated if needed.
+Also, motivational phrases are located at the very bottom of `config.py`, which might be updated if needed.
