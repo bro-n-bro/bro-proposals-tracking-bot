@@ -133,3 +133,6 @@ dmypy.json
 
 # SQL
 data/proposals.db
+
+# config
+data/config.py
