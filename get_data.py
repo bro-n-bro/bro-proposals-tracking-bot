@@ -17,7 +17,13 @@ async def get_proposals(session, network):
     url = f"{network['lcd_api']}/gov/proposals?limit=1000000"
     async with session.get(url) as resp:
         resp = await resp.json()
-        props = [prop for prop in resp['result'] if prop['status'] == 2]
+        try:
+            props = [prop for prop in resp['result'] if prop['status'] == 2]
+        except Exception as e:
+            url = f"{network['lcd_api']}/cosmos/gov/v1beta1/proposals?pagination.limit=1000000"
+            async with session.get(url) as resp:
+                resp = await resp.json()
+                props = [prop for prop in resp['proposals'] if prop['status'] == 'PROPOSAL_STATUS_VOTING_PERIOD']
         return [parse_proposal(network, prop) for prop in props]
 
 
@@ -63,7 +69,10 @@ async def get_data():
 
 def parse_proposal(network, proposal: dict):
     network = network['name']
-    _id = int(proposal['id'])
+    try:
+        _id = int(proposal['id'])
+    except Exception as e:
+        _id = int(proposal['proposal_id'])
     try:
         title = proposal['content']['value']['title']
     except KeyError:
