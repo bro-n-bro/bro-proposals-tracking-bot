@@ -14,26 +14,20 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 
 async def get_proposals(session, network):
-    url = f"{network['lcd_api']}/gov/proposals?limit=1000000"
+    url = f"{network['lcd_api']}/cosmos/gov/v1beta1/proposals?proposal_status=2&pagination.limit=100"
     async with session.get(url) as resp:
         resp = await resp.json()
-        try:
-            props = [prop for prop in resp['result'] if prop['status'] == 2]
-        except Exception as e:
-            url = f"{network['lcd_api']}/cosmos/gov/v1beta1/proposals?pagination.limit=1000000"
-            async with session.get(url) as resp:
-                resp = await resp.json()
-                props = [prop for prop in resp['proposals'] if prop['status'] == 'PROPOSAL_STATUS_VOTING_PERIOD']
+        props = [prop for prop in resp['proposals'] if prop['status'] == 'PROPOSAL_STATUS_VOTING_PERIOD']
         return [parse_proposal(network, prop) for prop in props]
 
 
 async def get_vote(session, proposal):
     network = [network for network in NETWORKS if network['name'] == proposal[0]][0]
     voter = address_to_address(network['validator'], network['prefix'])
-    url = f"{network['lcd_api']}/gov/proposals/{proposal[1]}/votes/{voter}"
+    url = f"{network['lcd_api']}/cosmos/gov/v1beta1/proposals/{proposal[1]}/votes/{voter}"
     async with session.get(url) as resp:
         resp = await resp.json()
-        if 'error' in list(resp.keys()):
+        if 'code' in list(resp.keys()):
             proposal.append(False)
             return proposal
         else:
