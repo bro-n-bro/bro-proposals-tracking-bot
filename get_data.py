@@ -58,19 +58,21 @@ async def get_data():
             else:
                 continue
         [save_to_db(p) for p in proposals if p and not check_dublicates(p[0], p[1])]
+        # print([(p) for p in proposals if p and not check_dublicates(p[0], p[1])])
         logging.info("Data saved in a database")
 
 
 def parse_proposal(network, proposal: dict):
     network = network['name']
-    try:
+    if 'id' in proposal.keys():
         _id = int(proposal['id'])
-    except Exception as e:
+    else:
         _id = int(proposal['proposal_id'])
     try:
-        title = proposal['content']['value']['title']
-    except KeyError:
         title = proposal['content']['title']
+    except Exception as e:
+        print(network, 'error', e)
+        title = 'Something with soft or param updates'
     voting_end_time = int(parser.parse(proposal['voting_end_time']).timestamp())
     return [network, _id, title, voting_end_time]
 
@@ -78,4 +80,7 @@ def parse_proposal(network, proposal: dict):
 def save_data():
     create_table()
     asyncio.run(get_data())
+
+
+save_data()
 
