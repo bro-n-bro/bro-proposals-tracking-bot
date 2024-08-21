@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.12
 
 COPY requirements.txt .
 RUN pip install -r ./requirements.txt
@@ -9,6 +9,6 @@ COPY sql.py .
 COPY utils.py .
 COPY data  data/
 COPY _wallet.py .
-COPY _typing.py .
+COPY custom_typing.py .
 
 CMD python -u ./notifier.py --log=INFO

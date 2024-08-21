@@ -16,6 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 async def get_proposals(session, network):
     try:
         url = f"{network['lcd_api']}/cosmos/gov/v1beta1/proposals?proposal_status=2&pagination.limit=100"
+        print(url)
         async with session.get(url) as resp:
             resp = await resp.json()
             props = [prop for prop in resp['proposals'] if prop['status'] == 'PROPOSAL_STATUS_VOTING_PERIOD']
@@ -34,6 +35,7 @@ async def get_vote(session, proposal):
     url = f"{network['lcd_api']}/cosmos/gov/v1beta1/proposals/{proposal[1]}/votes/{voter}"
     async with session.get(url) as resp:
         resp = await resp.json()
+        print(resp)
         if 'code' in list(resp.keys()):
             proposal.append(False)
             return proposal
@@ -84,10 +86,10 @@ def parse_proposal(network, proposal: dict):
     return [network, _id, title, voting_end_time]
 
 
-def save_data():
+async def save_data():
     create_table()
-    asyncio.run(get_data())
+    await get_data()
 
 
-save_data()
+asyncio.run(save_data())
 

@@ -1,5 +1,5 @@
-aiohttp == 3.8.1
-python-telegram-bot == 13.13
+aiohttp == 3.10.5
+python-telegram-bot == 20.0
 bech32 == 1.2.0
 ecdsa == 0.18.0
 hdwallets == 0.1.2
