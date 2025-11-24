@@ -1,3 +1,6 @@
+# Personal config
+data/my_config.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -133,6 +136,3 @@ dmypy.json
 
 # SQL
 data/proposals.db
-
-# config
-data/config.py

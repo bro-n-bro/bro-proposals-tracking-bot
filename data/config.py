@@ -14,6 +14,7 @@ NOTIFIER_REMINDER_MODES = {
 }
 
 NETWORKS = [
+    # Example 1: Single LCD API endpoint (simple format)
     {
         "name": "qwoyn",
         "lcd_api": "https://lcd.qwoyn-1.bronbro.io",
@@ -21,9 +22,14 @@ NETWORKS = [
         "prefix": "qwoyn",
         "explorer": "https://cyb.ai/senate/"
     },
+    # Example 2: Multiple LCD API endpoints with automatic fallback
     {
         "name": "bostrom",
-        "lcd_api": "https://lcd.bostrom.bronbro.io",
+        "lcd_endpoints": [  # Use lcd_endpoints (array) instead of lcd_api (string)
+            "https://lcd.bostrom.bronbro.io",
+            "http://jupiter.cybernode.ai:36317",
+            "https://api.bostrom.alternative.io"  # Will fallback if first fails
+        ],
         "validator": "bostromvaloper1ydc5fy9fjdygvgw36u49yj39fr67pd9m5qexm8",
         "prefix": "bostrom",
         "explorer": "https://cyb.ai/senate/"
@@ -119,6 +125,29 @@ NETWORKS = [
        "prefix": "centauri",
        "explorer": "https://ping.pub/Centauri/gov/"
    },
+   # Uncomment and configure to add Namada support
+   # {
+   #     "name": "namada",
+   #     "provider": "namada",  # Required for Namada
+   #     "validator_address": "tnam1qqwemkdvpvnqs3djdz23lhu0aeuun59vxje7pqp3",  # Your Namada validator address
+   #     "indexers": [
+   #         "https://indexer.namada.citizenweb3.com",  # Citizen Web3
+   #         "https://indexer.namada.net",  # Heliax (official)
+   #         "https://index-namada.5elementsnodes.com",  # 5ElementsNodes
+   #         "https://namada-indexer.denodes.xyz",  # deNodes
+   #         "https://namada-indexer.wavefive.xyz"  # Wavefive
+   #     ],
+   #     "explorer": "https://validatorinfo.com/networks/namada/proposal/"
+   # },
+   # Uncomment to add AtomOne support (uses gov v1 API)
+   # {
+   #     "name": "atomone",
+   #     "gov_version": "v1",  # Required: AtomOne uses modern gov v1 API
+   #     "lcd_api": "https://api.atomone.citizenweb3.com",
+   #     "validator": "atonevaloper1...",  # Your AtomOne validator address
+   #     "prefix": "atone",
+   #     "explorer": "https://validatorinfo.com/networks/atomone/proposal/"
+   # },
 ]
 
 PHRASES = {

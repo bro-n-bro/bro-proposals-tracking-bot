@@ -1,4 +1,4 @@
-from data.config import NOTIFIER_FREQUENCY, CHAT_ID, TG_BOT_API_TOKEN, MESSAGE_THREAD_ID
+from data.my_config import NOTIFIER_FREQUENCY, CHAT_ID, TG_BOT_API_TOKEN, MESSAGE_THREAD_ID
 from sql import get_all_rows, drop_rows, save_to_db, get_rows, drop_row_by_msg_id, get_outdated_props
 from get_data import save_data
 from utils import chose_next_notification, notify, get_time_left_s

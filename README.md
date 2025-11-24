@@ -18,7 +18,8 @@ CHAT_ID = -122987163
 
 2. Fill networks part. Rest api with http or https access required (it is the one that usually runs on 1317 port). Validators valoper address required.
 
-```bash
+**Single endpoint (simple):**
+```python
     {
         "name": "osmosis",
         "lcd_api": "http://lcd.osmosis-1",
@@ -27,6 +28,26 @@ CHAT_ID = -122987163
         "explorer": "https://www.mintscan.io/osmosis/proposals/"
     }
 ```
+
+**Multiple endpoints with automatic fallback (recommended):**
+```python
+    {
+        "name": "cosmos",
+        "lcd_endpoints": [  # Use array instead of single string
+            "https://rest.primary-provider.com/cosmoshub",
+            "https://rest.backup-provider.com/cosmoshub",
+            "https://rest.third-provider.com/cosmoshub"
+        ],
+        "validator": "cosmosvaloper1abc...",
+        "prefix": "cosmos",
+        "explorer": "https://www.mintscan.io/cosmos/proposals/"
+    }
+```
+*If the first endpoint fails, the bot will automatically try the next one in the list.*
+
+**Special chains:**
+- **AtomOne**: requires `"gov_prefix": "atomone"` (uses `/atomone/gov/` instead of `/cosmos/gov/`)
+- **Namada**: requires `"provider": "namada"` and `"indexers": [...]` array instead of lcd_api
 
 It is possible to add or remove networks upon own requiremens\set of chains you need to monitor. 
 
@@ -50,6 +71,14 @@ NOTIFIER_REMINDER_MODES = {
         "SOFT": (range(345_600, 3_036_800), 86_400)
 ```
 
-The first time range defines how `soon` proposal will end, the last one is how often to send reminder. All numbers are in seconds so keep the formatting as it was in case of adjusting. 
+The first time range defines how `soon` proposal will end, the last one is how often to send reminder. All numbers are in seconds so keep the formatting as it was in case of adjusting.
+
+## Supported Networks
+
+- **Standard Cosmos SDK chains** - Osmosis, Juno, Stargaze, Cosmos Hub, etc. (uses `gov v1beta1`)
+- **Modern Cosmos SDK chains** - AtomOne, etc. (uses `gov v1` API with automatic fallback)
+- **Namada** - Custom governance via Indexer API
+
+The bot automatically detects which API version to use. For AtomOne and similar modern chains, add `"gov_version": "v1"` in config. 
 
 Also, motivational phrases are located at the very bottom of `config.py`, which might be updated if needed.

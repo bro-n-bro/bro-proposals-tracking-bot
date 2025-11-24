@@ -2,7 +2,7 @@ import sqlite3
 import time
 
 
-from data.config import SQL_PATH
+from data.my_config import SQL_PATH
 
 
 def connection_wrapper(func):

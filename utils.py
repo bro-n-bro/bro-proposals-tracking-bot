@@ -1,4 +1,4 @@
-from data.config import NOTIFIER_FREQUENCY, NOTIFIER_REMINDER_MODES, PHRASES, NETWORKS
+from data.my_config import NOTIFIER_FREQUENCY, NOTIFIER_REMINDER_MODES, PHRASES, NETWORKS
 from datetime import timedelta
 
 import time

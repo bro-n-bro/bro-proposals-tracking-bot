@@ -7,6 +7,7 @@ COPY get_data.py .
 COPY notifier.py .
 COPY sql.py .
 COPY utils.py .
+COPY namada_provider.py .
 COPY data  data/
 COPY _wallet.py .
 COPY custom_typing.py .
